@@ -6,21 +6,60 @@
   <title>SpinPro – Tennis Performance & Potential Calculator</title>
   <link rel="stylesheet" href="assets/index.css" />
 </head>
+
 <body>
-  <h1>🎾 SpinPro – Tennis Performance & Potential Calculator</h1>
+  <header>
+    <h1>🎾 SpinPro - Tennis Performance & Potential Calculator</h1>
+  </header>
 
-  <section id="input-section">
-    <label>Serve Speed (km/h): <input id="serveSpeed" type="number" /></label>
-    <label>Match Win %: <input id="winPercent" type="number" /></label>
-    <label>Stamina (1–10): <input id="stamina" type="number" /></label>
-    <button id="calculateBtn">Calculate</button>
-  </section>
+  <main>
+    <form id="performance-form">
+      <h2>Physical Fitness Tests</h2>
 
-  <section id="output-section">
-    <h2>Results</h2>
-    <p id="performanceResult"></p>
-    <p id="potentialResult"></p>
-  </section>
+      <label for="beepCooper">Beep Test (level) OR Cooper Test (meters):</label>
+      <input type="number" id="beepCooper" required placeholder="e.g. 10 (beep) or 2400 (cooper)" />
+
+      <label for="sprint40">40m Sprint Time (seconds):</label>
+      <input type="number" id="sprint40" required placeholder="e.g. 5.5" step="0.01" />
+
+      <label for="verticalJump">Vertical Jump Height (cm):</label>
+      <input type="number" id="verticalJump" required placeholder="e.g. 50" />
+
+      <label for="pushups">Push-ups in 1 Minute:</label>
+      <input type="number" id="pushups" required placeholder="e.g. 40" />
+
+      <label for="plankTime">Plank Hold Time (seconds):</label>
+      <input type="number" id="plankTime" required placeholder="e.g. 120" />
+
+      <label for="restingHR">Resting Heart Rate (bpm):</label>
+      <input type="number" id="restingHR" required placeholder="e.g. 60" />
+
+      <h2>Tennis-Specific Stats</h2>
+
+      <label for="serveSpeed">Serve Speed (km/h):</label>
+      <input type="number" id="serveSpeed" required placeholder="e.g. 170" />
+
+      <label for="firstServe">First Serve Percentage (%):</label>
+      <input type="number" id="firstServe" required placeholder="e.g. 65" />
+
+      <label for="errors">Unforced Errors per Match:</label>
+      <input type="number" id="errors" required placeholder="e.g. 15" />
+
+      <label for="winPct">Match Win Percentage (%):</label>
+      <input type="number" id="winPct" required placeholder="e.g. 60" />
+
+      <label for="experience">Years of Playing Experience:</label>
+      <input type="number" id="experience" required placeholder="e.g. 8" />
+
+      <button type="submit">Calculate Performance Score</button>
+    </form>
+
+    <section id="result" class="hidden">
+      <h2>Your Performance & Potential</h2>
+      <p id="score"></p>
+      <p id="feedback"></p>
+    </section>
+  </main>
 
   <script src="assets/index.js"></script>
 </body>
