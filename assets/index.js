@@ -8,7 +8,10 @@ document.getElementById("calculateBtn").addEventListener("click", () => {
     return;
   }
 
+  // Formula for performance score
   const performanceScore = (serveSpeed / 200) * 0.4 + (winPercent / 100) * 0.4 + (stamina / 10) * 0.2;
+
+  // Potential percentage
   const potentialPercent = Math.min(Math.round(performanceScore * 100), 100);
 
   document.getElementById("performanceResult").textContent = `Performance Score: ${performanceScore.toFixed(2)}`;
