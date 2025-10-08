@@ -1,58 +1,133 @@
 body {
   font-family: "Inter", sans-serif;
-  background: #f9fbff;
+  background: linear-gradient(135deg, #f3f8ff, #e8f1ff);
   color: #222;
-  max-width: 700px;
-  margin: 50px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  margin: 0;
 }
 
+/* ===== Main Container ===== */
+.container {
+  background: #ffffff;
+  max-width: 750px;
+  width: 100%;
+  border-radius: 18px;
+  padding: 30px 35px 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Headings ===== */
 h1 {
   text-align: center;
-  color: #0066cc;
+  color: #007b5e;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
 }
 
-#input-section {
+h2 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-top: 25px;
+  border-bottom: 2px solid #e6e6e6;
+  padding-bottom: 5px;
+}
+
+/* ===== Form Section ===== */
+form {
   margin-top: 20px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
 }
 
 label {
   display: block;
-  margin: 10px 0;
+  margin-top: 15px;
+  font-weight: 500;
+  color: #333;
 }
 
 input {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   width: 100%;
-  margin-top: 4px;
+  padding: 10px 12px;
+  border: 1px solid #ccd5e0;
+  border-radius: 8px;
+  margin-top: 6px;
+  font-size: 15px;
+  transition: 0.2s ease;
+  background-color: #fdfdfd;
 }
 
+input:focus {
+  outline: none;
+  border-color: #007b5e;
+  box-shadow: 0 0 0 3px rgba(0, 123, 94, 0.15);
+}
+
+/* ===== Button ===== */
 button {
-  background: #0066cc;
+  background: #007b5e;
   color: white;
   border: none;
-  padding: 12px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-top: 15px;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 25px;
   width: 100%;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.15s ease;
 }
 
 button:hover {
-  background: #004a99;
+  background: #005f46;
+  transform: translateY(-1px);
 }
 
+button:active {
+  transform: scale(0.98);
+}
+
+/* ===== Output Section ===== */
 #output-section {
-  margin-top: 30px;
-  background: #e8f1ff;
-  padding: 20px;
-  border-radius: 10px;
+  margin-top: 35px;
+  background: #f0fff7;
+  padding: 25px;
+  border-radius: 12px;
+  border-left: 5px solid #007b5e;
+  box-shadow: inset 0 0 10px rgba(0, 123, 94, 0.08);
+}
+
+#output-section h2 {
+  color: #007b5e;
+  text-align: center;
+}
+
+#score, #potential {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  margin-top: 10px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 0.95rem;
+  }
 }
