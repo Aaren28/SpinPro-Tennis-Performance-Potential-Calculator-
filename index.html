@@ -1,66 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpinPro – Tennis Performance & Potential Calculator</title>
-  <link rel="stylesheet" href="assets/index.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpinPro — Tennis Performance Calculator</title>
+    <link rel="stylesheet" href="assets/index.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-900 font-inter min-h-screen flex flex-col items-center py-10">
+    <div class="w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8">
+      <h1 class="text-3xl font-bold mb-6 text-center text-green-600">🎾 SpinPro Tennis Performance Calculator</h1>
+      <p class="text-gray-600 text-center mb-6">Enter your data below to estimate your overall tennis performance and pro potential.</p>
 
-<body>
-  <header>
-    <h1>🎾 SpinPro - Tennis Performance & Potential Calculator</h1>
-  </header>
+      <form id="performanceForm" class="space-y-4">
+        <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Physical Fitness Tests</h2>
 
-  <main>
-    <form id="performance-form">
-      <h2>Physical Fitness Tests</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input id="beepTest" type="number" step="0.1" placeholder="Beep Test (Level)" class="input" />
+          <input id="cooperTest" type="number" placeholder="Cooper Test (m)" class="input" />
+          <input id="sprint" type="number" step="0.01" placeholder="40m Sprint Time (sec)" class="input" />
+          <input id="jump" type="number" placeholder="Vertical Jump (cm)" class="input" />
+          <input id="pushups" type="number" placeholder="Push-ups in 1 min" class="input" />
+          <input id="plank" type="number" placeholder="Plank Time (sec)" class="input" />
+          <input id="rhr" type="number" placeholder="Resting Heart Rate (bpm)" class="input" />
+        </div>
 
-      <label for="beepCooper">Beep Test (level) OR Cooper Test (meters):</label>
-      <input type="number" id="beepCooper" required placeholder="e.g. 10 (beep) or 2400 (cooper)" />
+        <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 pt-4">Tennis-Specific Stats</h2>
 
-      <label for="sprint40">40m Sprint Time (seconds):</label>
-      <input type="number" id="sprint40" required placeholder="e.g. 5.5" step="0.01" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input id="serveSpeed" type="number" placeholder="Serve Speed (km/h)" class="input" />
+          <input id="firstServe" type="number" placeholder="First Serve %" class="input" />
+          <input id="unforcedErrors" type="number" placeholder="Unforced Errors / Match" class="input" />
+          <input id="winRate" type="number" placeholder="Match Win %" class="input" />
+          <input id="experience" type="number" step="0.1" placeholder="Years Playing" class="input" />
+        </div>
 
-      <label for="verticalJump">Vertical Jump Height (cm):</label>
-      <input type="number" id="verticalJump" required placeholder="e.g. 50" />
+        <button type="submit" class="w-full bg-green-600 text-white font-semibold py-3 rounded-xl hover:bg-green-700 transition">
+          Calculate Performance
+        </button>
+      </form>
 
-      <label for="pushups">Push-ups in 1 Minute:</label>
-      <input type="number" id="pushups" required placeholder="e.g. 40" />
+      <div id="result" class="mt-6 text-center hidden">
+        <h2 class="text-2xl font-bold text-gray-800">Your Results</h2>
+        <p id="score" class="text-lg mt-2 text-gray-700"></p>
+        <p id="potential" class="text-lg font-medium text-green-600 mt-1"></p>
+      </div>
+    </div>
 
-      <label for="plankTime">Plank Hold Time (seconds):</label>
-      <input type="number" id="plankTime" required placeholder="e.g. 120" />
-
-      <label for="restingHR">Resting Heart Rate (bpm):</label>
-      <input type="number" id="restingHR" required placeholder="e.g. 60" />
-
-      <h2>Tennis-Specific Stats</h2>
-
-      <label for="serveSpeed">Serve Speed (km/h):</label>
-      <input type="number" id="serveSpeed" required placeholder="e.g. 170" />
-
-      <label for="firstServe">First Serve Percentage (%):</label>
-      <input type="number" id="firstServe" required placeholder="e.g. 65" />
-
-      <label for="errors">Unforced Errors per Match:</label>
-      <input type="number" id="errors" required placeholder="e.g. 15" />
-
-      <label for="winPct">Match Win Percentage (%):</label>
-      <input type="number" id="winPct" required placeholder="e.g. 60" />
-
-      <label for="experience">Years of Playing Experience:</label>
-      <input type="number" id="experience" required placeholder="e.g. 8" />
-
-      <button type="submit">Calculate Performance Score</button>
-    </form>
-
-    <section id="result" class="hidden">
-      <h2>Your Performance & Potential</h2>
-      <p id="score"></p>
-      <p id="feedback"></p>
-    </section>
-  </main>
-
-  <script src="assets/index.js"></script>
-</body>
+    <script src="assets/index.js"></script>
+  </body>
 </html>
