@@ -3,12 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SpinPro - Tennis Performance & Potential Calculator</title>
+  <title>SpinPro – Tennis Performance & Potential Calculator</title>
   <link rel="stylesheet" href="assets/index.css" />
 </head>
 <body>
-  <h1>🎾 SpinPro - Tennis Performance & Potential Calculator</h1>
-  <p>Welcome! This is your tennis performance calculator site.</p>
+  <h1>🎾 SpinPro – Tennis Performance & Potential Calculator</h1>
+
+  <section id="input-section">
+    <label>Serve Speed (km/h): <input id="serveSpeed" type="number" /></label>
+    <label>Match Win %: <input id="winPercent" type="number" /></label>
+    <label>Stamina (1–10): <input id="stamina" type="number" /></label>
+    <button id="calculateBtn">Calculate</button>
+  </section>
+
+  <section id="output-section">
+    <h2>Results</h2>
+    <p id="performanceResult"></p>
+    <p id="potentialResult"></p>
+  </section>
 
   <script src="assets/index.js"></script>
 </body>
