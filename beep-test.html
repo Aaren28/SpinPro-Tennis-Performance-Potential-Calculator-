@@ -5,27 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beep Test</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/script.js" defer></script>
+  <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <div class="container fade-in">
-    <h1>🏃‍♂️ Beep Test</h1>
-    <p>Run between two points with the beeps until you can't keep up. This measures <strong>aerobic endurance</strong>.</p>
+  <div class="container">
+    <h1>🏃 Beep Test</h1>
+    <p>Run between two points with the beeps until you can’t keep up. Measures aerobic endurance.</p>
 
-    <div class="timer">
-      <span id="timer-display">15:00</span>
+    <div class="timer-card">
+      <h2 id="timer">15:00</h2>
+      <div class="controls">
+        <button id="startBtn" class="btn">Start</button>
+        <button id="pauseBtn" class="btn secondary">Pause</button>
+        <button id="resetBtn" class="btn secondary">Reset</button>
+      </div>
+      <div class="input-group">
+        <label for="beepLevel">Beep Test Level:</label>
+        <input type="number" id="beepLevel" placeholder="e.g. 9.5">
+      </div>
+      <a href="cooper-test.html" class="btn next">Next ➡️</a>
     </div>
-
-    <div class="button-group">
-      <button id="start-timer" class="btn">Start</button>
-      <button id="pause-timer" class="btn">Pause</button>
-      <button id="reset-timer" class="btn">Reset</button>
-    </div>
-
-    <label for="beep-level">Beep Test Level:</label>
-    <input id="beep-level" type="number" placeholder="e.g. 9.5">
-
-    <a href="cooper-test.html" class="btn next">Next ➡️</a>
   </div>
 </body>
 </html>
