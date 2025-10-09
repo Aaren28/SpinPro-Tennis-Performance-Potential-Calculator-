@@ -3,25 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tennis Stats</title>
+  <title>Tennis-Specific Stats</title>
   <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>🎾 Tennis-Specific Stats</h1>
-    <label>Serve speed (km/h):</label>
-    <input id="serveSpeed" type="number" placeholder="e.g. 150">
-    <label>First serve %:</label>
-    <input id="servePercent" type="number" placeholder="e.g. 68">
-    <label>Unforced errors per match:</label>
-    <input id="unforcedErrors" type="number" placeholder="e.g. 12">
-    <label>Win %:</label>
-    <input id="winPercent" type="number" placeholder="e.g. 75">
-    <label>Years of experience:</label>
-    <input id="experience" type="number" placeholder="e.g. 5">
-    <p id="tennisError" class="error"></p>
-    <button onclick="saveTennis()">Next ➡️</button>
+  <div class="card">
+    <h2>🎾 Tennis-Specific Stats</h2>
+
+    <p>Enter your tennis-specific performance stats below.</p>
+
+    <div class="input-group">
+      <label for="serve-speed">Serve Speed (km/h):</label>
+      <input type="number" id="serve-speed" placeholder="e.g. 120" />
+    </div>
+
+    <div class="input-group">
+      <label for="first-serve">First Serve %:</label>
+      <input type="number" id="first-serve" placeholder="e.g. 65" />
+    </div>
+
+    <div class="input-group">
+      <label for="unforced-errors">Unforced Errors per Match:</label>
+      <input type="number" id="unforced-errors" placeholder="e.g. 12" />
+    </div>
+
+    <div class="input-group">
+      <label for="win-percentage">Win Percentage (%):</label>
+      <input type="number" id="win-percentage" placeholder="e.g. 75" />
+    </div>
+
+    <div class="input-group">
+      <label for="years-experience">Years of Experience:</label>
+      <input type="number" id="years-experience" placeholder="e.g. 6" />
+    </div>
+
+    <p id="tennisError" class="error-text"></p>
+
+    <button onclick="saveTennisStats()">Next ➡️</button>
   </div>
 </body>
 </html>
