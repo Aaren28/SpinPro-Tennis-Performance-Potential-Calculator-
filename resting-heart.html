@@ -8,17 +8,15 @@
   <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="card">
-    <h2>❤️ Resting Heart Rate</h2>
-    <p>Measure your heart rate first thing in the morning before getting out of bed. 
-    Count your beats for one minute.</p>
+  <div class="container">
+    <h1>❤️ Resting Heart Rate</h1>
+    <p>Measure your resting heart rate in beats per minute (BPM).</p>
 
-    <div class="input-group">
-      <label>Resting Heart Rate (bpm):</label>
-      <input type="number" id="resting-heart" placeholder="e.g. 60">
-    </div>
+    <label>Heart Rate (BPM):</label>
+    <input type="number" id="restingHeart" placeholder="e.g. 65" min="30">
 
-    <button onclick="saveHeart()">Next ➡️</button>
+    <p id="heartError" class="error"></p>
+    <button onclick="saveHeartRate()">Next ➡️</button>
   </div>
 </body>
 </html>
