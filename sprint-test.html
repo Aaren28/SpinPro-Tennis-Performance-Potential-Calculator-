@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sprint Test</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>20m Sprint Test</title>
+  <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="card">
-    <h2>⚡ Sprint Test</h2>
-    <p>Measure your 20m sprint time to assess speed and explosiveness.</p>
+    <h2>⚡ 20m Sprint Test</h2>
+    <p>Measure the time it takes you to sprint 20 meters at full speed. 
+    Use a stopwatch and record your best time.</p>
 
-    <input type="number" id="sprint-time" placeholder="Time in seconds" />
-    <button onclick="nextPage('vertical-jump.html')">Next ➡️</button>
+    <div class="input-group">
+      <label>Time (seconds):</label>
+      <input type="number" id="sprint-test" placeholder="e.g. 3.4">
+    </div>
+
+    <button onclick="saveSprintTest()">Next ➡️</button>
   </div>
 </body>
 </html>
