@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Push-Ups Test</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Push-Up Test</title>
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>💪 Push-Up Test</h1>
-    <p>Perform as many push-ups as you can without rest.</p>
-
-    <label>Number of Push-Ups:</label>
-    <input type="number" id="pushupsCount" placeholder="e.g. 35" min="1">
-
-    <p id="pushupError" class="error"></p>
+    <p>Count how many push-ups you can complete in one minute.</p>
+    <label>Push-ups completed:</label>
+    <input id="pushupsCount" type="number" placeholder="e.g. 35">
+    <p id="pushupsError" class="error"></p>
     <button onclick="savePushups()">Next ➡️</button>
   </div>
 </body>
 </html>
+
