@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Tennis Performance & Potential Calculator</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tennis Performance Potential Calculator</title>
   <link rel="stylesheet" href="assets/style.css" />
 </head>
-<body class="home">
-  <div class="hero">
-    <div class="ball" aria-hidden="true"></div>
-    <h1 class="title">🎾 Tennis Performance<br>& Potential Calculator</h1>
-    <p class="tagline">Find out your tennis potential through science-based fitness tests.</p>
-    <button id="startNow" class="btn">Start Now</button>
+<body>
+  <div class="container fade-in">
+    <h1>🎾 Tennis Performance Potential Calculator</h1>
+    <p>Welcome! This tool will help you measure your tennis fitness and potential through several short tests.</p>
+    <p>Start with the <strong>Beep Test</strong> and continue through each stage.</p>
+    <a href="beep-test.html" class="btn">Start</a>
   </div>
-
-  <!-- small inline navigation fallback (guarantees navigation even if external JS not loaded) -->
-  <script>
-    document.getElementById('startNow').addEventListener('click', function () {
-      window.location.href = 'beep-test.html';
-    });
-  </script>
 </body>
 </html>
