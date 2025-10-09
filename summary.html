@@ -5,13 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Summary</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Your Results</h2>
-    <div id="results"></div>
-    <button onclick="window.location.href='index.html'">Start Over</button>
+  <div class="container fade-in">
+    <h1>🏆 Performance Summary</h1>
+    <p>All tests completed! Here's a summary of your tennis fitness potential:</p>
+
+    <div class="result-card">
+      <p><strong>Beep Test Level:</strong> <span id="result-beep">—</span></p>
+      <p><strong>Cooper Distance:</strong> <span id="result-cooper">—</span> m</p>
+      <p><strong>Estimated Fitness Score:</strong> <span id="result-score">—</span></p>
+    </div>
+
+    <a href="index.html" class="btn">🏠 Back to Home</a>
   </div>
 </body>
 </html>
