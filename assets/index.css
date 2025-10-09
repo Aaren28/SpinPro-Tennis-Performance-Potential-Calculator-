@@ -1,76 +1,112 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+
 body {
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(135deg, #e0f7ff, #f8faff);
-  color: #222;
   margin: 0;
-  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* 🎾 Home Page Styling */
+body.home {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  background: linear-gradient(135deg, #0b6623, #1eb53a);
+  overflow: hidden;
+  animation: bgMove 10s ease infinite alternate;
 }
 
-.container {
-  background: white;
-  padding: 30px 40px;
-  border-radius: 16px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-  max-width: 500px;
-  width: 90%;
+@keyframes bgMove {
+  0% { background-position: left; }
+  100% { background-position: right; }
+}
+
+.hero {
   text-align: center;
+  color: #fff;
+  animation: fadeIn 1.2s ease forwards;
+  padding: 20px;
 }
 
-h1, h2 {
-  color: #0077cc;
-  margin-bottom: 20px;
+.title {
+  font-size: 2.8em;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  line-height: 1.2;
 }
 
-p {
-  color: #555;
-  margin-bottom: 25px;
-  line-height: 1.5;
+.tagline {
+  font-size: 1.2em;
+  margin-top: 10px;
+  opacity: 0.9;
 }
 
-label {
-  display: block;
-  text-align: left;
-  margin-top: 15px;
-  color: #333;
+/* 🎾 Animated Tennis Ball */
+.ball {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle at 30% 30%, #fff 5%, #fef65b 15%, #fef65b 85%, #d6c90f 100%);
+  border-radius: 50%;
+  margin: 0 auto 30px auto;
+  position: relative;
+  animation: bounce 2s ease-in-out infinite;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-50px); }
+}
+
+/* 🟢 Start Button */
+.btn {
+  background: #fff;
+  color: #0b6623;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 25px;
+  font-weight: 700;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.btn:hover {
+  background: #fef65b;
+  color: #0b6623;
+  box-shadow: 0 0 30px #fef65b;
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* General Container Styling (other pages reuse this) */
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 40px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease;
 }
 
 input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  margin-top: 5px;
-}
-
-button {
-  background: #0077cc;
-  color: white;
   border: none;
-  padding: 12px;
   border-radius: 8px;
-  margin-top: 25px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 16px;
+  padding: 10px;
+  width: 70%;
+  text-align: center;
+  font-size: 1em;
 }
 
-button:hover {
-  background: #005fa3;
-}
-
-#timer {
-  font-size: 2rem;
-  margin: 10px 0 20px;
-  color: #444;
-}
-
-#results {
-  background: #f1f8ff;
-  padding: 15px;
-  border-radius: 10px;
-  text-align: left;
+.timer {
+  font-size: 2em;
+  margin: 20px 0;
 }
