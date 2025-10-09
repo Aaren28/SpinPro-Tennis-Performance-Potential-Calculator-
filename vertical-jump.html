@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vertical Jump</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vertical Jump Test</title>
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>🦵 Vertical Jump Test</h1>
-    <p>Measure your maximum vertical jump height.</p>
-
-    <label>Jump Height (cm):</label>
-    <input type="number" id="jumpHeight" placeholder="e.g. 50" min="1">
-
+    <h1>🏋️ Vertical Jump Test</h1>
+    <p>Measure your vertical jump height in centimeters.</p>
+    <input id="jumpHeight" type="number" placeholder="e.g. 55">
     <p id="jumpError" class="error"></p>
-    <button onclick="saveJump()">Next ➡️</button>
+    <button onclick="saveVertical()">Next ➡️</button>
   </div>
 </body>
 </html>
