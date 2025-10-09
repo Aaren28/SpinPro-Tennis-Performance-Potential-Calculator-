@@ -7,8 +7,10 @@ function startTimer(minutes = 0) {
     timeRemaining--;
     const min = Math.floor(timeRemaining / 60);
     const sec = timeRemaining % 60;
-    document.getElementById("timer-display").textContent =
-      `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+    const timerDisplay = document.getElementById("timer-display");
+    if (timerDisplay) {
+      timerDisplay.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+    }
     if (timeRemaining <= 0) clearInterval(timerInterval);
   }, 1000);
 }
@@ -20,50 +22,59 @@ function pauseTimer() {
 function resetTimer(minutes = 0) {
   clearInterval(timerInterval);
   timeRemaining = minutes * 60;
-  document.getElementById("timer-display").textContent =
-    minutes > 0 ? `${minutes}:00` : "00:00";
+  const timerDisplay = document.getElementById("timer-display");
+  if (timerDisplay) {
+    timerDisplay.textContent = minutes > 0 ? `${minutes}:00` : "00:00";
+  }
 }
 
-// Save data functions
+// ✅ SAVE DATA FUNCTIONS + PAGE NAVIGATION
 function saveBeepTest() {
-  const data = { beep: +document.getElementById("beep-test").value };
-  localStorage.setItem("beepTest", JSON.stringify(data));
+  const val = document.getElementById("beep-test").value;
+  if (!val) return alert("Please enter your beep test level!");
+  localStorage.setItem("beepTest", JSON.stringify({ beep: +val }));
   window.location.href = "cooper-test.html";
 }
 
 function saveCooperTest() {
-  const data = { cooper: +document.getElementById("cooper-test").value };
-  localStorage.setItem("cooperTest", JSON.stringify(data));
+  const val = document.getElementById("cooper-test").value;
+  if (!val) return alert("Please enter your Cooper test distance!");
+  localStorage.setItem("cooperTest", JSON.stringify({ cooper: +val }));
   window.location.href = "sprint-test.html";
 }
 
 function saveSprintTest() {
-  const data = { sprint: +document.getElementById("sprint-test").value };
-  localStorage.setItem("sprintTest", JSON.stringify(data));
+  const val = document.getElementById("sprint-test").value;
+  if (!val) return alert("Please enter your sprint time!");
+  localStorage.setItem("sprintTest", JSON.stringify({ sprint: +val }));
   window.location.href = "pushups.html";
 }
 
 function savePushups() {
-  const data = { pushups: +document.getElementById("pushups").value };
-  localStorage.setItem("pushups", JSON.stringify(data));
+  const val = document.getElementById("pushups").value;
+  if (!val) return alert("Please enter your pushups count!");
+  localStorage.setItem("pushups", JSON.stringify({ pushups: +val }));
   window.location.href = "plank.html";
 }
 
 function savePlank() {
-  const data = { plank: +document.getElementById("plank").value };
-  localStorage.setItem("plank", JSON.stringify(data));
+  const val = document.getElementById("plank").value;
+  if (!val) return alert("Please enter your plank time!");
+  localStorage.setItem("plank", JSON.stringify({ plank: +val }));
   window.location.href = "resting-heart.html";
 }
 
 function saveHeart() {
-  const data = { resting: +document.getElementById("resting-heart").value };
-  localStorage.setItem("heart", JSON.stringify(data));
+  const val = document.getElementById("resting-heart").value;
+  if (!val) return alert("Please enter your resting heart rate!");
+  localStorage.setItem("heart", JSON.stringify({ resting: +val }));
   window.location.href = "vertical-jump.html";
 }
 
 function saveJump() {
-  const data = { jump: +document.getElementById("vertical-jump").value };
-  localStorage.setItem("jump", JSON.stringify(data));
+  const val = document.getElementById("vertical-jump").value;
+  if (!val) return alert("Please enter your jump height!");
+  localStorage.setItem("jump", JSON.stringify({ jump: +val }));
   window.location.href = "tennis-stats.html";
 }
 
@@ -79,8 +90,10 @@ function saveTennisStats() {
   window.location.href = "summary.html";
 }
 
-// Calculate final results
+// ✅ SUMMARY PAGE LOGIC
 window.onload = function () {
+  console.log("✅ script.js loaded!");
+
   if (window.location.pathname.endsWith("summary.html")) {
     const beep = JSON.parse(localStorage.getItem("beepTest"))?.beep || 0;
     const cooper = JSON.parse(localStorage.getItem("cooperTest"))?.cooper || 0;
@@ -91,14 +104,13 @@ window.onload = function () {
     const jump = JSON.parse(localStorage.getItem("jump"))?.jump || 0;
     const t = JSON.parse(localStorage.getItem("tennisStats")) || {};
 
-    // Physical score
+    // Calculate scores
     let endurance = ((beep / 15) * 20 + (cooper / 3500) * 20);
     let strength = ((pushups / 60) * 15 + (plank / 240) * 15 + (jump / 70) * 15);
     let speed = ((4 - sprint) / 4) * 15;
-    let heartBonus = (70 - resting) / 70 * 10;
+    let heartBonus = ((70 - resting) / 70) * 10;
     let physicalScore = Math.max(0, Math.min(endurance + strength + speed + heartBonus, 100));
 
-    // Tennis score
     let tennisScore = (
       (t.serve / 200) * 25 +
       (t.firstServe / 100) * 15 +
