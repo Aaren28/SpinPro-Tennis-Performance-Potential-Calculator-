@@ -1,51 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SpinPro — Tennis Performance Calculator</title>
-    <link rel="stylesheet" href="assets/index.css" />
-  </head>
-  <body class="bg-gray-50 text-gray-900 font-inter min-h-screen flex flex-col items-center py-10">
-    <div class="w-full max-w-2xl bg-white shadow-lg rounded-2xl p-8">
-      <h1 class="text-3xl font-bold mb-6 text-center text-green-600">🎾 SpinPro Tennis Performance Calculator</h1>
-      <p class="text-gray-600 text-center mb-6">Enter your data below to estimate your overall tennis performance and pro potential.</p>
+<div class="timer">
+  <h2>12-Minute Cooper Test</h2>
+  <p id="timer-display">12:00</p>
+  <button onclick="startTimer()">Start</button>
+  <button onclick="pauseTimer()">Pause</button>
+  <button onclick="resetTimer()">Reset</button>
+</div>
 
-      <form id="performanceForm" class="space-y-4">
-        <h2 class="text-xl font-semibold text-gray-800 border-b pb-2">Physical Fitness Tests</h2>
+<script>
+let time = 12 * 60;
+let timer;
+let running = false;
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input id="beepTest" type="number" step="0.1" placeholder="Beep Test (Level)" class="input" />
-          <input id="cooperTest" type="number" placeholder="Cooper Test (m)" class="input" />
-          <input id="sprint" type="number" step="0.01" placeholder="40m Sprint Time (sec)" class="input" />
-          <input id="jump" type="number" placeholder="Vertical Jump (cm)" class="input" />
-          <input id="pushups" type="number" placeholder="Push-ups in 1 min" class="input" />
-          <input id="plank" type="number" placeholder="Plank Time (sec)" class="input" />
-          <input id="rhr" type="number" placeholder="Resting Heart Rate (bpm)" class="input" />
-        </div>
+function updateDisplay() {
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
+  document.getElementById("timer-display").textContent =
+    `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
 
-        <h2 class="text-xl font-semibold text-gray-800 border-b pb-2 pt-4">Tennis-Specific Stats</h2>
+function startTimer() {
+  if (!running) {
+    running = true;
+    timer = setInterval(() => {
+      if (time > 0) {
+        time--;
+        updateDisplay();
+      } else {
+        clearInterval(timer);
+        alert("Time's up!");
+      }
+    }, 1000);
+  }
+}
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input id="serveSpeed" type="number" placeholder="Serve Speed (km/h)" class="input" />
-          <input id="firstServe" type="number" placeholder="First Serve %" class="input" />
-          <input id="unforcedErrors" type="number" placeholder="Unforced Errors / Match" class="input" />
-          <input id="winRate" type="number" placeholder="Match Win %" class="input" />
-          <input id="experience" type="number" step="0.1" placeholder="Years Playing" class="input" />
-        </div>
+function pauseTimer() {
+  running = false;
+  clearInterval(timer);
+}
 
-        <button type="submit" class="w-full bg-green-600 text-white font-semibold py-3 rounded-xl hover:bg-green-700 transition">
-          Calculate Performance
-        </button>
-      </form>
+function resetTimer() {
+  running = false;
+  clearInterval(timer);
+  time = 12 * 60;
+  updateDisplay();
+}
 
-      <div id="result" class="mt-6 text-center hidden">
-        <h2 class="text-2xl font-bold text-gray-800">Your Results</h2>
-        <p id="score" class="text-lg mt-2 text-gray-700"></p>
-        <p id="potential" class="text-lg font-medium text-green-600 mt-1"></p>
-      </div>
-    </div>
-
-    <script src="assets/index.js"></script>
-  </body>
-</html>
+updateDisplay();
+</script>
