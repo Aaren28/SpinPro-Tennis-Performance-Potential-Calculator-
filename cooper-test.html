@@ -5,27 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cooper Test</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="container fade-in">
-    <h1>⏱️ Cooper Test</h1>
-    <p>Run as far as you can in <strong>12 minutes</strong>. This measures <strong>aerobic capacity</strong>.</p>
+  <div class="container">
+    <h1>🏃‍♂️ Cooper Test</h1>
+    <p>Run as far as possible in 12 minutes. Measures stamina and cardiovascular endurance.</p>
 
-    <div class="timer">
-      <span id="timer-display">12:00</span>
+    <div class="test-card">
+      <label for="distance">Distance Covered (m):</label>
+      <input type="number" id="distance" placeholder="e.g. 2400">
+      <a href="summary.html" class="btn next">Next ➡️</a>
     </div>
-
-    <div class="button-group">
-      <button id="start-timer" class="btn">Start</button>
-      <button id="pause-timer" class="btn">Pause</button>
-      <button id="reset-timer" class="btn">Reset</button>
-    </div>
-
-    <label for="distance">Distance Covered (meters):</label>
-    <input id="distance" type="number" placeholder="e.g. 2700">
-
-    <a href="results.html" class="btn next">Next ➡️</a>
   </div>
 </body>
 </html>
