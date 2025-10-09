@@ -10,14 +10,13 @@ function showError(id, msg) {
   document.getElementById(id).textContent = msg;
 }
 
-// ---------- Beep Test ---------- //
 function saveBeepTest() {
   const beepLevel = document.getElementById("beepLevel").value;
   if (!beepLevel) {
-    showError("beepError", "⚠️ Please enter your beep test level.");
+    document.getElementById("beepError").textContent = "⚠️ Please enter your beep test level.";
     return;
   }
-  saveToStorage("beepLevel", beepLevel);
+  localStorage.setItem("beepLevel", beepLevel);
   window.location.href = "cooper-test.html";
 }
 
