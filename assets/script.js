@@ -1,151 +1,186 @@
 let timerInterval;
-let timeRemaining = 0;
+let timeElapsed = 0;
+let timerRunning = false;
 
-function startTimer(minutes = 0) {
-  if (timeRemaining === 0) timeRemaining = minutes * 60;
-  timerInterval = setInterval(() => {
-    timeRemaining--;
-    const min = Math.floor(timeRemaining / 60);
-    const sec = timeRemaining % 60;
-    const timerDisplay = document.getElementById("timer-display");
-    if (timerDisplay) {
-      timerDisplay.textContent = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
-    }
-    if (timeRemaining <= 0) clearInterval(timerInterval);
-  }, 1000);
+function updateTimerDisplay(elementId, seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = seconds % 60;
+  document.getElementById(elementId).textContent =
+    `${min}:${sec.toString().padStart(2, "0")}`;
 }
 
-function pauseTimer() {
-  clearInterval(timerInterval);
-}
-
-function resetTimer(minutes = 0) {
-  clearInterval(timerInterval);
-  timeRemaining = minutes * 60;
-  const timerDisplay = document.getElementById("timer-display");
-  if (timerDisplay) {
-    timerDisplay.textContent = minutes > 0 ? `${minutes}:00` : "00:00";
-  }
-}
-
-// ✅ SAVE DATA FUNCTIONS + PAGE NAVIGATION
+// ===== Beep Test =====
 function saveBeepTest() {
-  console.log("✅ saveBeepTest() called");
-  
-  const input = document.getElementById("beep-test");
-  if (!input) {
-    alert("❌ Could not find input field with ID 'beep-test'");
+  const beepInput = document.getElementById("beep-test");
+  const error = document.getElementById("beep-error");
+  const value = parseFloat(beepInput.value);
+
+  if (!value) {
+    error.textContent = "⚠️ Please enter your beep test level before continuing.";
     return;
   }
-
-  const val = input.value.trim();
-  if (!val) {
-    alert("Please enter your beep test level before continuing!");
-    return;
-  }
-
-  localStorage.setItem("beepTest", JSON.stringify({ beep: +val }));
-  console.log("✅ Saved beep test value:", val);
+  error.textContent = "";
+  localStorage.setItem("beepTest", JSON.stringify({ beep: value }));
   window.location.href = "cooper-test.html";
 }
 
-let cooperTimer;
-let cooperSeconds = 0;
-let cooperRunning = false;
-
-function updateCooperDisplay() {
-  const minutes = Math.floor(cooperSeconds / 60);
-  const seconds = cooperSeconds % 60;
-  document.getElementById("cooper-timer-display").textContent = 
-    `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-}
-
+// ===== Cooper Test =====
 function startCooper() {
-  if (!cooperRunning) { // ✅ prevents multiple intervals
-    cooperRunning = true;
-    cooperTimer = setInterval(() => {
-      cooperSeconds++;
-      updateCooperDisplay();
-    }, 1000);
-  }
+  if (timerRunning) return; // Prevent multiple intervals
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timeElapsed++;
+    updateTimerDisplay("cooper-timer-display", timeElapsed);
+  }, 1000);
 }
 
 function pauseCooper() {
-  clearInterval(cooperTimer);
-  cooperRunning = false;
+  clearInterval(timerInterval);
+  timerRunning = false;
 }
 
 function resetCooper() {
-  clearInterval(cooperTimer);
-  cooperRunning = false;
-  cooperSeconds = 0;
-  updateCooperDisplay();
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timeElapsed = 0;
+  updateTimerDisplay("cooper-timer-display", timeElapsed);
 }
 
 function saveCooperTest() {
-  const distanceInput = document.getElementById("cooper-distance");
-  const errorEl = document.getElementById("cooper-error");
+  const input = document.getElementById("cooper-distance");
+  const error = document.getElementById("cooper-error");
+  const value = parseFloat(input.value);
 
-  if (!distanceInput.value) {
-    errorEl.textContent = "⚠️ Please enter your distance before continuing.";
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter the distance you covered.";
     return;
   }
-
-  localStorage.setItem("cooperDistance", distanceInput.value);
+  error.textContent = "";
+  localStorage.setItem("cooperTest", JSON.stringify({ cooper: value }));
   window.location.href = "sprint-test.html";
 }
 
+// ===== Sprint Test =====
 function saveSprintTest() {
-  const val = document.getElementById("sprint-test").value;
-  if (!val) return alert("Please enter your sprint time!");
-  localStorage.setItem("sprintTest", JSON.stringify({ sprint: +val }));
+  const input = document.getElementById("sprint-test");
+  const error = document.getElementById("sprint-error");
+  const value = parseFloat(input.value);
+
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter your sprint time.";
+    return;
+  }
+  error.textContent = "";
+  localStorage.setItem("sprintTest", JSON.stringify({ sprint: value }));
   window.location.href = "pushups.html";
 }
 
+// ===== Pushups =====
 function savePushups() {
-  const val = document.getElementById("pushups").value;
-  if (!val) return alert("Please enter your pushups count!");
-  localStorage.setItem("pushups", JSON.stringify({ pushups: +val }));
+  const input = document.getElementById("pushups");
+  const error = document.getElementById("pushup-error");
+  const value = parseFloat(input.value);
+
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter how many push-ups you can do.";
+    return;
+  }
+  error.textContent = "";
+  localStorage.setItem("pushups", JSON.stringify({ pushups: value }));
   window.location.href = "plank.html";
 }
 
+// ===== Plank =====
+function startPlank() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timeElapsed++;
+    updateTimerDisplay("plank-timer-display", timeElapsed);
+  }, 1000);
+}
+
+function pausePlank() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+}
+
+function resetPlank() {
+  clearInterval(timerInterval);
+  timerRunning = false;
+  timeElapsed = 0;
+  updateTimerDisplay("plank-timer-display", timeElapsed);
+}
+
 function savePlank() {
-  const val = document.getElementById("plank").value;
-  if (!val) return alert("Please enter your plank time!");
-  localStorage.setItem("plank", JSON.stringify({ plank: +val }));
+  const input = document.getElementById("plank");
+  const error = document.getElementById("plank-error");
+  const value = parseFloat(input.value);
+
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter your plank time.";
+    return;
+  }
+  error.textContent = "";
+  localStorage.setItem("plank", JSON.stringify({ plank: value }));
   window.location.href = "resting-heart.html";
 }
 
+// ===== Resting Heart =====
 function saveHeart() {
-  const val = document.getElementById("resting-heart").value;
-  if (!val) return alert("Please enter your resting heart rate!");
-  localStorage.setItem("heart", JSON.stringify({ resting: +val }));
+  const input = document.getElementById("resting-heart");
+  const error = document.getElementById("heart-error");
+  const value = parseFloat(input.value);
+
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter your resting heart rate.";
+    return;
+  }
+  error.textContent = "";
+  localStorage.setItem("heart", JSON.stringify({ resting: value }));
   window.location.href = "vertical-jump.html";
 }
 
+// ===== Vertical Jump =====
 function saveJump() {
-  const val = document.getElementById("vertical-jump").value;
-  if (!val) return alert("Please enter your jump height!");
-  localStorage.setItem("jump", JSON.stringify({ jump: +val }));
+  const input = document.getElementById("vertical-jump");
+  const error = document.getElementById("jump-error");
+  const value = parseFloat(input.value);
+
+  if (!value || value <= 0) {
+    error.textContent = "⚠️ Please enter your jump height.";
+    return;
+  }
+  error.textContent = "";
+  localStorage.setItem("jump", JSON.stringify({ jump: value }));
   window.location.href = "tennis-stats.html";
 }
 
+// ===== Tennis Stats =====
 function saveTennisStats() {
-  const data = {
+  const inputs = {
     serve: +document.getElementById("serve-speed").value,
     firstServe: +document.getElementById("first-serve").value,
     errors: +document.getElementById("unforced-errors").value,
     win: +document.getElementById("win-percentage").value,
     years: +document.getElementById("years-experience").value,
   };
-  localStorage.setItem("tennisStats", JSON.stringify(data));
+
+  const error = document.getElementById("tennis-error");
+
+  // Check if all are filled
+  if (Object.values(inputs).some(v => !v || v < 0)) {
+    error.textContent = "⚠️ Please fill in all tennis stats before continuing.";
+    return;
+  }
+
+  error.textContent = "";
+  localStorage.setItem("tennisStats", JSON.stringify(inputs));
   window.location.href = "summary.html";
 }
 
-// ✅ SUMMARY PAGE LOGIC
+// ===== Summary =====
 window.onload = function () {
-  console.log("✅ script.js loaded!");
-
   if (window.location.pathname.endsWith("summary.html")) {
     const beep = JSON.parse(localStorage.getItem("beepTest"))?.beep || 0;
     const cooper = JSON.parse(localStorage.getItem("cooperTest"))?.cooper || 0;
@@ -156,13 +191,14 @@ window.onload = function () {
     const jump = JSON.parse(localStorage.getItem("jump"))?.jump || 0;
     const t = JSON.parse(localStorage.getItem("tennisStats")) || {};
 
-    // Calculate scores
+    // Physical score
     let endurance = ((beep / 15) * 20 + (cooper / 3500) * 20);
     let strength = ((pushups / 60) * 15 + (plank / 240) * 15 + (jump / 70) * 15);
     let speed = ((4 - sprint) / 4) * 15;
-    let heartBonus = ((70 - resting) / 70) * 10;
+    let heartBonus = (70 - resting) / 70 * 10;
     let physicalScore = Math.max(0, Math.min(endurance + strength + speed + heartBonus, 100));
 
+    // Tennis score
     let tennisScore = (
       (t.serve / 200) * 25 +
       (t.firstServe / 100) * 15 +
@@ -174,18 +210,18 @@ window.onload = function () {
 
     const proPotential = (physicalScore * 0.45 + tennisScore * 0.55).toFixed(1);
 
+    let feedback;
+    if (proPotential >= 85) feedback = "🏆 Excellent! You have pro-level potential. Keep refining match strategy and endurance.";
+    else if (proPotential >= 70) feedback = "🔥 Strong base! Improve your agility and consistency for top performance.";
+    else if (proPotential >= 50) feedback = "💪 You're doing well! Work on strength and serve accuracy.";
+    else feedback = "🎾 Keep going! Focus on building endurance and basic consistency.";
+
     document.getElementById("results").innerHTML = `
       <h3>Results Overview</h3>
       <p><strong>Physical Fitness Score:</strong> ${physicalScore.toFixed(1)}/100</p>
       <p><strong>Tennis Performance Score:</strong> ${tennisScore.toFixed(1)}/100</p>
       <h3>🌟 Pro Potential: ${proPotential}%</h3>
+      <p>${feedback}</p>
     `;
-
-    document.getElementById("ratings").innerHTML =
-      proPotential >= 85 ? "🏆 Pro Level Potential" :
-      proPotential >= 70 ? "🔥 Advanced Player" :
-      proPotential >= 50 ? "💪 Intermediate Player" :
-      "🎾 Beginner – Keep Training!";
   }
 };
-
