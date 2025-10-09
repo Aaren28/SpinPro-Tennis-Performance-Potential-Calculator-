@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resting Heart Rate</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>❤️ Resting Heart Rate</h1>
-    <p>Measure your resting heart rate in beats per minute (BPM).</p>
-
-    <label>Heart Rate (BPM):</label>
-    <input type="number" id="restingHeart" placeholder="e.g. 65" min="30">
-
+    <p>Enter your resting heart rate (beats per minute).</p>
+    <input id="heartRate" type="number" placeholder="e.g. 65">
     <p id="heartError" class="error"></p>
-    <button onclick="saveHeartRate()">Next ➡️</button>
+    <button onclick="saveHeart()">Next ➡️</button>
   </div>
 </body>
 </html>
