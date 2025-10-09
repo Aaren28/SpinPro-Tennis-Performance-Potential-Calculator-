@@ -5,22 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tennis Stats</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/script.js"></script>
+  <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Tennis Stats</h2>
-    <label>Serve Speed (km/h):</label>
-    <input type="number" id="serveSpeed">
-    <label>First Serve Percentage:</label>
-    <input type="number" id="firstServePercent">
-    <label>Unforced Errors per Match:</label>
-    <input type="number" id="errors">
-    <label>Match Win Percentage:</label>
-    <input type="number" id="winPercent">
-    <label>Years of Experience:</label>
-    <input type="number" id="yearsExperience">
-    <button onclick="saveAndNext('serveSpeed','summary.html')">See Results</button>
+  <div class="card">
+    <h2>🎾 Tennis-Specific Stats</h2>
+    <p>Enter your match and skill statistics below.</p>
+
+    <div class="input-group"><label>Serve Speed (km/h):</label><input type="number" id="serve-speed" placeholder="e.g. 165"></div>
+    <div class="input-group"><label>First Serve %:</label><input type="number" id="first-serve" placeholder="e.g. 68"></div>
+    <div class="input-group"><label>Unforced Errors per Match:</label><input type="number" id="unforced-errors" placeholder="e.g. 12"></div>
+    <div class="input-group"><label>Match Win %:</label><input type="number" id="win-percentage" placeholder="e.g. 72"></div>
+    <div class="input-group"><label>Years of Playing Experience:</label><input type="number" id="years-experience" placeholder="e.g. 5"></div>
+
+    <button onclick="saveTennisStats()">Show Results 🏆</button>
   </div>
 </body>
 </html>
