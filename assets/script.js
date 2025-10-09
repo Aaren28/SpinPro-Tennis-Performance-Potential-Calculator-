@@ -156,24 +156,28 @@ function saveVertical() {
 }
 
 // ---------- Tennis Stats ---------- //
-function saveTennis() {
-  const serve = document.getElementById("serveSpeed").value;
-  const servePct = document.getElementById("servePercent").value;
-  const errors = document.getElementById("unforcedErrors").value;
-  const winPct = document.getElementById("winPercent").value;
-  const exp = document.getElementById("experience").value;
+function saveTennisStats() {
+  const serve = document.getElementById("serve-speed").value;
+  const firstServe = document.getElementById("first-serve").value;
+  const errors = document.getElementById("unforced-errors").value;
+  const win = document.getElementById("win-percentage").value;
+  const years = document.getElementById("years-experience").value;
+  const errorText = document.getElementById("tennisError");
 
-  if (!serve || !servePct || !errors || !winPct || !exp) {
-    showError("tennisError", "⚠️ Please fill in all tennis stats.");
+  if (!serve || !firstServe || !errors || !win || !years) {
+    errorText.textContent = "⚠️ Please fill out all tennis stats before continuing.";
     return;
   }
 
-  saveToStorage("serveSpeed", serve);
-  saveToStorage("servePercent", servePct);
-  saveToStorage("unforcedErrors", errors);
-  saveToStorage("winPercent", winPct);
-  saveToStorage("experience", exp);
+  const data = {
+    serve: +serve,
+    firstServe: +firstServe,
+    errors: +errors,
+    win: +win,
+    years: +years,
+  };
 
+  localStorage.setItem("tennisStats", JSON.stringify(data));
   window.location.href = "summary.html";
 }
 
