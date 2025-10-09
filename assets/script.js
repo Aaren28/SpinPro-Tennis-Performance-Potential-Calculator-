@@ -30,9 +30,22 @@ function resetTimer(minutes = 0) {
 
 // ✅ SAVE DATA FUNCTIONS + PAGE NAVIGATION
 function saveBeepTest() {
-  const val = document.getElementById("beep-test").value;
-  if (!val) return alert("Please enter your beep test level!");
+  console.log("✅ saveBeepTest() called");
+  
+  const input = document.getElementById("beep-test");
+  if (!input) {
+    alert("❌ Could not find input field with ID 'beep-test'");
+    return;
+  }
+
+  const val = input.value.trim();
+  if (!val) {
+    alert("Please enter your beep test level before continuing!");
+    return;
+  }
+
   localStorage.setItem("beepTest", JSON.stringify({ beep: +val }));
+  console.log("✅ Saved beep test value:", val);
   window.location.href = "cooper-test.html";
 }
 
