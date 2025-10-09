@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tennis Stats</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Tennis Stats</h2>
+    <label>Serve Speed (km/h):</label>
+    <input type="number" id="serveSpeed">
+    <label>First Serve Percentage:</label>
+    <input type="number" id="firstServePercent">
+    <label>Unforced Errors per Match:</label>
+    <input type="number" id="errors">
+    <label>Match Win Percentage:</label>
+    <input type="number" id="winPercent">
+    <label>Years of Experience:</label>
+    <input type="number" id="yearsExperience">
+    <button onclick="saveAndNext('serveSpeed','summary.html')">See Results</button>
+  </div>
+</body>
+</html>
