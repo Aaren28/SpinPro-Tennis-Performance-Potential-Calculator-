@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Summary</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Results Summary</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h1>🏆 Summary</h1>
-    <p>Here’s your performance overview:</p>
+  <div class="card summary">
+    <h2>🏆 Your Tennis Performance Summary</h2>
+    <p>Review your stats and potential performance rating.</p>
 
-    <div class="result-card">
-      <p><strong>Beep Test Level:</strong> <span>9.5</span></p>
-      <p><strong>Cooper Distance:</strong> <span>2400 m</span></p>
-      <p><strong>Estimated Fitness Score:</strong> <span>Elite</span></p>
-    </div>
-
-    <a href="index.html" class="btn">🏠 Back to Home</a>
+    <div id="results"></div>
+    <button onclick="window.location.href='index.html'">Restart 🔁</button>
   </div>
 </body>
 </html>
