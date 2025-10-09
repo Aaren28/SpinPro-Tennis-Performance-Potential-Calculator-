@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooper Test</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Cooper Test</h2>
+    <p>Run as far as possible in 12 minutes. Enter the total distance you covered.</p>
+    <div id="timer">12:00</div>
+    <button onclick="startTimer(12)">Start Timer</button>
+    <label>Distance (meters):</label>
+    <input type="number" id="cooperDistance" placeholder="e.g. 2400">
+    <button onclick="saveAndNext('cooperDistance','sprint-test.html')">Next</button>
+  </div>
+</body>
+</html>
