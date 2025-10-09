@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plank Test</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>🧘 Plank Test</h1>
-    <p>Hold your plank position as long as possible. Use the timer below to measure your time.</p>
-
-    <div class="timer" id="plankTimer">0:00</div>
+    <p>Hold your plank for as long as possible using the timer below.</p>
+    <div id="plankTimer">0:00</div>
     <div class="buttons">
-      <button onclick="startTimer('plank')">Start</button>
-      <button onclick="pauseTimer('plank')">Pause</button>
-      <button onclick="resetTimer('plank', 0)">Reset</button>
+      <button onclick="startPlank()">Start</button>
+      <button onclick="pausePlank()">Pause</button>
+      <button onclick="resetPlank()">Reset</button>
     </div>
-
-    <label>Plank Time (seconds):</label>
-    <input type="number" id="plankTime" placeholder="e.g. 120" min="1">
-
+    <input id="plankTime" type="number" placeholder="Time in seconds">
     <p id="plankError" class="error"></p>
     <button onclick="savePlank()">Next ➡️</button>
   </div>
 </body>
 </html>
+
