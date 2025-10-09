@@ -1,1 +1,21 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beep Test</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script defer src="assets/script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Beep Test</h2>
+    <p>Run between two points in time with the beeps until you can’t keep up. This measures aerobic endurance.</p>
+    <div id="timer">15:00</div>
+    <button onclick="startTimer(15)">Start Timer</button>
+    <label>Beep Test Level:</label>
+    <input type="number" id="beepLevel" placeholder="e.g. 9.5">
+    <button onclick="saveAndNext('beepLevel','cooper-test.html')">Next</button>
+  </div>
+</body>
+</html>
