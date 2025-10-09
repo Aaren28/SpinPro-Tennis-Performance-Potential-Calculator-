@@ -49,10 +49,49 @@ function saveBeepTest() {
   window.location.href = "cooper-test.html";
 }
 
+let cooperTimer;
+let cooperSeconds = 0;
+let cooperRunning = false;
+
+function updateCooperDisplay() {
+  const minutes = Math.floor(cooperSeconds / 60);
+  const seconds = cooperSeconds % 60;
+  document.getElementById("cooper-timer-display").textContent = 
+    `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
+
+function startCooper() {
+  if (!cooperRunning) { // ✅ prevents multiple intervals
+    cooperRunning = true;
+    cooperTimer = setInterval(() => {
+      cooperSeconds++;
+      updateCooperDisplay();
+    }, 1000);
+  }
+}
+
+function pauseCooper() {
+  clearInterval(cooperTimer);
+  cooperRunning = false;
+}
+
+function resetCooper() {
+  clearInterval(cooperTimer);
+  cooperRunning = false;
+  cooperSeconds = 0;
+  updateCooperDisplay();
+}
+
 function saveCooperTest() {
-  const val = document.getElementById("cooper-test").value;
-  if (!val) return alert("Please enter your Cooper test distance!");
-  localStorage.setItem("cooperTest", JSON.stringify({ cooper: +val }));
+  const distanceInput = document.getElementById("cooper-distance");
+  const errorEl = document.getElementById("cooper-error");
+
+  if (!distanceInput.value) {
+    errorEl.textContent = "⚠️ Please enter your distance before continuing.";
+    return;
+  }
+
+  localStorage.setItem("cooperDistance", distanceInput.value);
   window.location.href = "sprint-test.html";
 }
 
