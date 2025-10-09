@@ -1,49 +1,16 @@
-<div class="timer">
-  <h2>12-Minute Cooper Test</h2>
-  <p id="timer-display">12:00</p>
-  <button onclick="startTimer()">Start</button>
-  <button onclick="pauseTimer()">Pause</button>
-  <button onclick="resetTimer()">Reset</button>
-</div>
-
-<script>
-let time = 12 * 60;
-let timer;
-let running = false;
-
-function updateDisplay() {
-  const minutes = Math.floor(time / 60);
-  const seconds = time % 60;
-  document.getElementById("timer-display").textContent =
-    `${minutes}:${seconds.toString().padStart(2, '0')}`;
-}
-
-function startTimer() {
-  if (!running) {
-    running = true;
-    timer = setInterval(() => {
-      if (time > 0) {
-        time--;
-        updateDisplay();
-      } else {
-        clearInterval(timer);
-        alert("Time's up!");
-      }
-    }, 1000);
-  }
-}
-
-function pauseTimer() {
-  running = false;
-  clearInterval(timer);
-}
-
-function resetTimer() {
-  running = false;
-  clearInterval(timer);
-  time = 12 * 60;
-  updateDisplay();
-}
-
-updateDisplay();
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tennis Performance & Potential Calculator</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Tennis Performance & Potential Calculator</h1>
+    <p>Assess your tennis potential with science-based physical and match tests.</p>
+    <button onclick="window.location.href='beep-test.html'">Start Now</button>
+  </div>
+</body>
+</html>
