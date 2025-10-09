@@ -1,23 +1,29 @@
-<div class="card">
-  <h2>🏃‍♂️ Cooper Test</h2>
-  <p>
-    Run as far as you can in 12 minutes. Use the timer below to keep track, then
-    enter the total distance you covered (in meters).
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooper Test</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <h1>🏃‍♂️ Cooper Test</h1>
+    <p>Run as far as you can in 12 minutes. Use the timer below and record your total distance in meters.</p>
 
-  <p id="cooper-timer-display">0:00</p>
+    <div class="timer" id="cooperTimer">12:00</div>
+    <div class="buttons">
+      <button onclick="startTimer('cooper')">Start</button>
+      <button onclick="pauseTimer('cooper')">Pause</button>
+      <button onclick="resetTimer('cooper', 12 * 60)">Reset</button>
+    </div>
 
-  <div class="btn-group">
-    <button onclick="startCooper()">Start</button>
-    <button onclick="pauseCooper()">Pause</button>
-    <button onclick="resetCooper()">Reset</button>
-  </div>
-
-  <div class="input-group">
     <label>Distance Covered (meters):</label>
-    <input type="number" id="cooper-distance" placeholder="e.g. 2400">
-    <p id="cooper-error" class="error"></p>
-  </div>
+    <input type="number" id="cooperDistance" placeholder="e.g. 2500" min="1">
 
-  <button onclick="saveCooperTest()">Next ➡️</button>
-</div>
+    <p id="cooperError" class="error"></p>
+    <button onclick="saveCooperTest()">Next ➡️</button>
+  </div>
+</body>
+</html>
