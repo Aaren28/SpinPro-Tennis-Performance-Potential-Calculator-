@@ -8,20 +8,17 @@
   <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="card">
-    <h2>🏃 Beep Test</h2>
-    <p>
-      The beep test involves running back and forth between two lines that are 20 meters apart,
-      with the goal of reaching the marker line before the next beep.
-      The speed of the beeps increases every minute until you can no longer keep up.
-    </p>
+  <div class="container">
+    <h1>🏃 Beep Test</h1>
+    <p>The Beep Test involves running 20 meters back and forth, keeping up with the beeps as they get faster.</p>
 
-    <div class="input-group">
-      <label>Enter your level:</label>
-      <input type="number" id="beep-test" placeholder="e.g. 9.5">
-    </div>
+    <label>Beep Test Level:</label>
+    <input type="number" id="beepLevel" placeholder="e.g. 10" min="1">
 
-    <!-- 👇 THIS is where the Next button goes -->
+    <label>Shuttles in Final Level:</label>
+    <input type="number" id="beepShuttles" placeholder="e.g. 5" min="1">
+
+    <p id="beepError" class="error"></p>
     <button onclick="saveBeepTest()">Next ➡️</button>
   </div>
 </body>
