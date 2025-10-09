@@ -9,11 +9,18 @@
 </head>
 <body>
   <div class="container">
-    <h1>🏃‍♂️ Beep Test</h1>
-    <p>The beep test involves running back and forth between two 20m lines. The speed increases every minute until you can’t keep up.</p>
-    <label>Level reached:</label>
-    <input id="beepLevel" type="number" placeholder="e.g. 10" min="1" max="21">
-    <p id="beepError" class="error"></p>
+    <h1>🏃 Beep Test</h1>
+    <p>
+      The beep test involves running back and forth between two lines that are 20 meters apart.
+      You must reach the line before the beep. The beeps get faster every minute until you can
+      no longer keep up.
+    </p>
+
+    <label for="beepLevel">Enter your level:</label>
+    <input type="number" id="beepLevel" placeholder="e.g. 9.5" />
+
+    <div id="beepError" class="error"></div>
+
     <button onclick="saveBeepTest()">Next ➡️</button>
   </div>
 </body>
