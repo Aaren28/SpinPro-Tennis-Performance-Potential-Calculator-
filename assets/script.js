@@ -1,102 +1,49 @@
-console.log('assets/script.js loaded');
+let timerInterval;
+let totalSeconds;
+let isRunning = false;
 
-document.addEventListener('DOMContentLoaded', () => {
-  // ======== Timer logic (works for both beep and cooper pages) =========
-  let timerInterval = null;
-  let timeLeft = null;
+function startTimer(duration) {
+  if (isRunning) return;
+  isRunning = true;
+  totalSeconds = duration;
+  const timerDisplay = document.getElementById("timer-display");
 
-  const display = document.getElementById('timerDisplay');
-  const startBtn = document.getElementById('startTimerBtn');
-  const pauseBtn = document.getElementById('pauseTimerBtn');
-  const resetBtn = document.getElementById('resetTimerBtn');
+  timerInterval = setInterval(() => {
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = totalSeconds % 60;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    timerDisplay.textContent = `${minutes}:${seconds}`;
 
-  function formatTime(t) {
-    const mins = Math.floor(t / 60);
-    const secs = t % 60;
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  }
-
-  function updateDisplay() {
-    if (!display) return;
-    display.textContent = formatTime(timeLeft);
-  }
-
-  function startTimer() {
-    if (!display) return;
-    if (timerInterval) return; // already running
-    timerInterval = setInterval(() => {
-      if (timeLeft > 0) {
-        timeLeft--;
-        updateDisplay();
-      } else {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        display.textContent = "Time’s up! ⏱️";
-      }
-    }, 1000);
-  }
-
-  function pauseTimer() {
-    if (timerInterval) {
+    if (--totalSeconds < 0) {
       clearInterval(timerInterval);
-      timerInterval = null;
+      timerDisplay.textContent = "TIME'S UP!";
+      isRunning = false;
     }
-  }
+  }, 1000);
+}
 
-  function resetTimer() {
-    if (!display) return;
-    const minutes = parseInt(display.dataset.minutes || '0', 10) || 0;
-    timeLeft = minutes * 60;
-    updateDisplay();
-    if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
-  }
+function pauseTimer() {
+  clearInterval(timerInterval);
+  isRunning = false;
+}
 
-  // Initialize timer if on a page with #timerDisplay
-  if (display) {
-    const minutes = parseInt(display.dataset.minutes || '0', 10) || 0;
-    timeLeft = minutes * 60;
-    updateDisplay();
-    if (startBtn) startBtn.addEventListener('click', startTimer);
-    if (pauseBtn) pauseBtn.addEventListener('click', pauseTimer);
-    if (resetBtn) resetBtn.addEventListener('click', resetTimer);
-  }
+function resetTimer(initialTime) {
+  clearInterval(timerInterval);
+  isRunning = false;
+  const timerDisplay = document.getElementById("timer-display");
+  timerDisplay.textContent = initialTime;
+}
 
-  // ======== Save inputs + Next navigation =========
-  const nextBtn = document.getElementById('nextBtn');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      // find any input with data-save and store it
-      const inputs = document.querySelectorAll('[data-save]');
-      let allOk = true;
-      inputs.forEach(inp => {
-        // required fields must have value
-        if (inp.required && !inp.value) allOk = false;
-        // save value (empty string allowed)
-        try { localStorage.setItem(inp.dataset.save, inp.value); } catch (e) { console.warn('localStorage error', e); }
-      });
-      if (!allOk) {
-        alert('Please fill required fields before continuing.');
-        return;
-      }
-      // navigate
-      const nextPage = nextBtn.dataset.next;
-      if (nextPage) window.location.href = nextPage;
-    });
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const timerDisplay = document.getElementById("timer-display");
+  if (!timerDisplay) return;
 
-  // ======== Summary page: fill results if present =========
-  const resultsDiv = document.getElementById('results');
-  if (resultsDiv) {
-    const keys = [
-      'beepLevel','cooperDistance','sprintTime','jumpHeight',
-      'pushups','plankTime','serveSpeed','firstServePercent','errors','winPercent','yearsExperience'
-    ];
-    let html = '<h3>Saved Test Values</h3><ul>';
-    keys.forEach(k => {
-      const v = localStorage.getItem(k);
-      if (v !== null && v !== '') html += `<li><strong>${k}:</strong> ${v}</li>`;
-    });
-    html += '</ul>';
-    resultsDiv.innerHTML = html;
-  }
+  let initialTime = timerDisplay.textContent.trim();
+  let seconds = initialTime.includes(":")
+    ? parseInt(initialTime.split(":")[0]) * 60 + parseInt(initialTime.split(":")[1])
+    : 0;
+
+  document.getElementById("start-timer")?.addEventListener("click", () => startTimer(seconds));
+  document.getElementById("pause-timer")?.addEventListener("click", pauseTimer);
+  document.getElementById("reset-timer")?.addEventListener("click", () => resetTimer(initialTime));
 });
