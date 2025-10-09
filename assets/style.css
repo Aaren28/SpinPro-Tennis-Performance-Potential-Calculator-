@@ -12,26 +12,32 @@ body {
   text-align: center;
   max-width: 600px;
   padding: 3rem;
-  background: #ffffffb3;
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
-h1, h2 {
-  color: #093a2e;
+h1 {
+  font-size: 3rem;
+  color: #004d2e;
+}
+
+h2 {
+  color: #0b3b2d;
+  margin-bottom: 10px;
 }
 
 button {
   background-color: #dfff5d;
   border: none;
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 12px 25px;
   font-size: 1.1rem;
   font-weight: 700;
   color: #093a2e;
   cursor: pointer;
-  margin: 10px;
-  transition: all 0.3s;
+  margin-top: 15px;
+  transition: all 0.3s ease;
 }
 
 button:hover {
@@ -42,16 +48,23 @@ button:hover {
 .card {
   background: #fff;
   padding: 2rem 3rem;
-  border-radius: 20px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
   text-align: center;
   max-width: 600px;
 }
 
-.timer span {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #006633;
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 10px 0;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #004d2e;
 }
 
 input {
@@ -60,6 +73,16 @@ input {
   border: 2px solid #b8ff39;
   text-align: center;
   font-size: 1rem;
-  margin: 10px 0;
-  width: 80%;
+}
+
+.summary #results {
+  margin-top: 20px;
+  text-align: left;
+}
+
+#ratings {
+  margin-top: 25px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
 }
