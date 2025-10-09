@@ -1,95 +1,82 @@
 body {
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(180deg, #e3ffe7 0%, #d9e7ff 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  background: radial-gradient(circle at center, #c6ffd0, #80e0a8);
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
 
-.hero {
+.container {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  max-width: 500px;
+  width: 90%;
   text-align: center;
-  max-width: 600px;
-  padding: 3rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 25px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  font-size: 3rem;
-  color: #004d2e;
+  color: #007b3b;
+  margin-bottom: 1rem;
 }
 
-h2 {
-  color: #0b3b2d;
-  margin-bottom: 10px;
-}
-
-button {
-  background-color: #dfff5d;
-  border: none;
-  border-radius: 30px;
-  padding: 12px 25px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #093a2e;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #b8ff39;
-  transform: scale(1.05);
-}
-
-.card {
-  background: #fff;
-  padding: 2rem 3rem;
-  border-radius: 25px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  max-width: 600px;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  margin: 10px 0;
-}
-
-label {
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #004d2e;
+p {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 input {
   padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #b8ff39;
-  text-align: center;
+  width: 80%;
+  margin: 8px 0;
+  border: 2px solid #ccc;
+  border-radius: 10px;
   font-size: 1rem;
+  text-align: center;
 }
 
-#timer-display {
-  font-size: 2rem;
-  font-weight: 600;
-  margin: 10px;
-  color: #004d2e;
+button {
+  background-color: #00994d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
 }
 
-.summary {
-  max-width: 700px;
-  background: #f4fff4;
+button:hover {
+  background-color: #007a3b;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
 .error {
   color: red;
-  font-size: 0.9em;
-  margin-top: 4px;
-  font-weight: 500;
+  font-size: 0.9rem;
+  min-height: 1rem;
+}
+
+#cooperTimer,
+#plankTimer {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007b3b;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin-top: 1.5rem;
+  color: #004d26;
 }
