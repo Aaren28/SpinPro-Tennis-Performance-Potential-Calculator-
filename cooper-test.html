@@ -5,17 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cooper Test</title>
   <link rel="stylesheet" href="assets/style.css">
-  <script defer src="assets/script.js"></script>
+  <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="container">
-    <h2>Cooper Test</h2>
-    <p>Run as far as possible in 12 minutes. Enter the total distance you covered.</p>
-    <div id="timer">12:00</div>
-    <button onclick="startTimer(12)">Start Timer</button>
-    <label>Distance (meters):</label>
-    <input type="number" id="cooperDistance" placeholder="e.g. 2400">
-    <button onclick="saveAndNext('cooperDistance','sprint-test.html')">Next</button>
+  <div class="container fade-in">
+    <h1>⏱️ Cooper Test</h1>
+    <p>Run as far as you can in <strong>12 minutes</strong>. This measures <strong>aerobic capacity</strong>.</p>
+
+    <div class="timer">
+      <span id="timer-display">12:00</span>
+    </div>
+
+    <div class="button-group">
+      <button id="start-timer" class="btn">Start</button>
+      <button id="pause-timer" class="btn">Pause</button>
+      <button id="reset-timer" class="btn">Reset</button>
+    </div>
+
+    <label for="distance">Distance Covered (meters):</label>
+    <input id="distance" type="number" placeholder="e.g. 2700">
+
+    <a href="results.html" class="btn next">Next ➡️</a>
   </div>
 </body>
 </html>
