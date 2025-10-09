@@ -1,29 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cooper Test</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/style.css" />
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <h1>🏃‍♂️ Cooper Test</h1>
-    <p>Run as far as you can in 12 minutes. Use the timer below and record your total distance in meters.</p>
-
-    <div class="timer" id="cooperTimer">12:00</div>
+    <h1>🏃‍♀️ Cooper Test</h1>
+    <p>Run as far as possible in 12 minutes. Use the timer to track and then enter your distance.</p>
+    <div id="cooperTimer">12:00</div>
     <div class="buttons">
-      <button onclick="startTimer('cooper')">Start</button>
-      <button onclick="pauseTimer('cooper')">Pause</button>
-      <button onclick="resetTimer('cooper', 12 * 60)">Reset</button>
+      <button onclick="startCooper()">Start</button>
+      <button onclick="pauseCooper()">Pause</button>
+      <button onclick="resetCooper()">Reset</button>
     </div>
-
-    <label>Distance Covered (meters):</label>
-    <input type="number" id="cooperDistance" placeholder="e.g. 2500" min="1">
-
+    <label>Distance covered (m):</label>
+    <input id="cooperDistance" type="number" placeholder="e.g. 2700">
     <p id="cooperError" class="error"></p>
     <button onclick="saveCooperTest()">Next ➡️</button>
   </div>
 </body>
 </html>
+
