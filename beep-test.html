@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beep Test</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="card">
-    <h2>🏃‍♂️ Beep Test</h2>
-    <p>Run between two points with the beeps until you can’t keep up. This measures aerobic endurance.</p>
-    
-    <div class="timer">
-      <span id="beep-timer">15:00</span>
-      <div class="buttons">
-        <button onclick="startTimer('beep-timer')">Start</button>
-        <button onclick="pauseTimer()">Pause</button>
-        <button onclick="resetTimer('beep-timer', 15)">Reset</button>
-      </div>
+    <h2>🏃 Beep Test</h2>
+    <p>The beep test involves running back and forth between two lines that are 20 meters apart, 
+    with the goal of reaching the marker line before the next beep. 
+    The speed of the beeps increases every minute until you can no longer keep up.</p>
+
+    <div class="input-group">
+      <label>Enter your level:</label>
+      <input type="number" id="beep-test" placeholder="e.g. 9.5">
     </div>
 
-    <input type="number" id="beep-level" placeholder="Enter level (e.g. 9.5)" />
-    <button onclick="nextPage('cooper-test.html')">Next ➡️</button>
+    <button onclick="saveBeepTest()">Next ➡️</button>
   </div>
 </body>
 </html>
