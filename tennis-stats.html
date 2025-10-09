@@ -1,46 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tennis-Specific Stats</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <script src="assets/script.js" defer></script>
-</head>
-<body>
-  <div class="card">
-    <h2>🎾 Tennis-Specific Stats</h2>
+function saveTennisStats() {
+  const serve = document.getElementById("serve-speed").value;
+  const firstServe = document.getElementById("first-serve").value;
+  const errors = document.getElementById("unforced-errors").value;
+  const win = document.getElementById("win-percentage").value;
+  const years = document.getElementById("years-experience").value;
+  const errorText = document.getElementById("tennisError");
 
-    <p>Enter your tennis-specific performance stats below.</p>
+  if (!serve || !firstServe || !errors || !win || !years) {
+    errorText.textContent = "⚠️ Please fill out all tennis stats before continuing.";
+    return;
+  }
 
-    <div class="input-group">
-      <label for="serve-speed">Serve Speed (km/h):</label>
-      <input type="number" id="serve-speed" placeholder="e.g. 120" />
-    </div>
+  const data = {
+    serve: +serve,
+    firstServe: +firstServe,
+    errors: +errors,
+    win: +win,
+    years: +years,
+  };
 
-    <div class="input-group">
-      <label for="first-serve">First Serve %:</label>
-      <input type="number" id="first-serve" placeholder="e.g. 65" />
-    </div>
-
-    <div class="input-group">
-      <label for="unforced-errors">Unforced Errors per Match:</label>
-      <input type="number" id="unforced-errors" placeholder="e.g. 12" />
-    </div>
-
-    <div class="input-group">
-      <label for="win-percentage">Win Percentage (%):</label>
-      <input type="number" id="win-percentage" placeholder="e.g. 75" />
-    </div>
-
-    <div class="input-group">
-      <label for="years-experience">Years of Experience:</label>
-      <input type="number" id="years-experience" placeholder="e.g. 6" />
-    </div>
-
-    <p id="tennisError" class="error-text"></p>
-
-    <button onclick="saveTennisStats()">Next ➡️</button>
-  </div>
-</body>
-</html>
+  localStorage.setItem("tennisStats", JSON.stringify(data));
+  window.location.href = "summary.html";
+}
