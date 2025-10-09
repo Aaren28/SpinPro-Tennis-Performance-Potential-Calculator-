@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Push-Up Test</title>
+  <title>Push-Ups Test</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="card">
-    <h2>💪 Push-Up Test</h2>
-    <p>Do as many push-ups as you can in one continuous set. 
-    Record your total number of push-ups.</p>
+  <div class="container">
+    <h1>💪 Push-Up Test</h1>
+    <p>Perform as many push-ups as you can without rest.</p>
 
-    <div class="input-group">
-      <label>Total push-ups:</label>
-      <input type="number" id="pushups" placeholder="e.g. 45">
-    </div>
+    <label>Number of Push-Ups:</label>
+    <input type="number" id="pushupsCount" placeholder="e.g. 35" min="1">
 
+    <p id="pushupError" class="error"></p>
     <button onclick="savePushups()">Next ➡️</button>
   </div>
 </body>
