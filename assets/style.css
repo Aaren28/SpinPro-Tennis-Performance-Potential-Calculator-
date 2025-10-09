@@ -114,3 +114,22 @@ h2 {
   margin-bottom: 10px;
   text-align: center;
 }
+
+.test-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.test-page h1 {
+  margin-bottom: 10px;
+}
+
+.test-page p {
+  width: 80%;
+  max-width: 600px;
+  margin-bottom: 20px;
+}
