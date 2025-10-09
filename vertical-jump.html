@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vertical Jump</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertical Jump Test</title>
+  <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="card">
-    <h2>🏋️ Vertical Jump</h2>
-    <p>Measure how high you can jump to test lower-body power.</p>
+    <h2>🦵 Vertical Jump</h2>
+    <p>Stand next to a wall, mark your standing reach, jump as high as you can, 
+    and mark your jump height. The difference is your vertical jump.</p>
 
-    <input type="number" id="jump-height" placeholder="Jump height (cm)" />
-    <button onclick="nextPage('summary.html')">See Results 🏆</button>
+    <div class="input-group">
+      <label>Jump Height (cm):</label>
+      <input type="number" id="vertical-jump" placeholder="e.g. 55">
+    </div>
+
+    <button onclick="saveJump()">Next ➡️</button>
   </div>
 </body>
 </html>
