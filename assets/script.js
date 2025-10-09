@@ -1,49 +1,50 @@
-let timerInterval;
-let totalSeconds;
-let isRunning = false;
+let timer;
+let timeLeft = 15 * 60;
+let running = false;
 
-function startTimer(duration) {
-  if (isRunning) return;
-  isRunning = true;
-  totalSeconds = duration;
-  const timerDisplay = document.getElementById("timer-display");
+const timerDisplay = document.getElementById("timer");
+const startBtn = document.getElementById("startBtn");
+const pauseBtn = document.getElementById("pauseBtn");
+const resetBtn = document.getElementById("resetBtn");
 
-  timerInterval = setInterval(() => {
-    let minutes = Math.floor(totalSeconds / 60);
-    let seconds = totalSeconds % 60;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-    timerDisplay.textContent = `${minutes}:${seconds}`;
+function updateTimerDisplay() {
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  timerDisplay.textContent = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+}
 
-    if (--totalSeconds < 0) {
-      clearInterval(timerInterval);
-      timerDisplay.textContent = "TIME'S UP!";
-      isRunning = false;
+if (startBtn) {
+  startBtn.addEventListener("click", () => {
+    if (!running) {
+      running = true;
+      timer = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimerDisplay();
+        } else {
+          clearInterval(timer);
+          alert("Time’s up!");
+        }
+      }, 1000);
     }
-  }, 1000);
+  });
 }
 
-function pauseTimer() {
-  clearInterval(timerInterval);
-  isRunning = false;
+if (pauseBtn) {
+  pauseBtn.addEventListener("click", () => {
+    running = false;
+    clearInterval(timer);
+  });
 }
 
-function resetTimer(initialTime) {
-  clearInterval(timerInterval);
-  isRunning = false;
-  const timerDisplay = document.getElementById("timer-display");
-  timerDisplay.textContent = initialTime;
+if (resetBtn) {
+  resetBtn.addEventListener("click", () => {
+    running = false;
+    clearInterval(timer);
+    timeLeft = 15 * 60;
+    updateTimerDisplay();
+  });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const timerDisplay = document.getElementById("timer-display");
-  if (!timerDisplay) return;
+updateTimerDisplay();
 
-  let initialTime = timerDisplay.textContent.trim();
-  let seconds = initialTime.includes(":")
-    ? parseInt(initialTime.split(":")[0]) * 60 + parseInt(initialTime.split(":")[1])
-    : 0;
-
-  document.getElementById("start-timer")?.addEventListener("click", () => startTimer(seconds));
-  document.getElementById("pause-timer")?.addEventListener("click", pauseTimer);
-  document.getElementById("reset-timer")?.addEventListener("click", () => resetTimer(initialTime));
-});
