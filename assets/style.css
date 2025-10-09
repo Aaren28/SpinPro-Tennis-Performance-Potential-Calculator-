@@ -86,3 +86,10 @@ input {
   max-width: 700px;
   background: #f4fff4;
 }
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+  font-weight: 500;
+}
