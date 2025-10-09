@@ -1,72 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
 body {
-  margin: 0;
-  font-family: 'Montserrat', sans-serif;
-  background: linear-gradient(135deg, #e9ffb2, #c1f37a);
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(180deg, #e3ffe7 0%, #d9e7ff 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  margin: 0;
 }
 
-.container {
+.hero {
   text-align: center;
-  background: white;
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   max-width: 600px;
+  padding: 3rem;
+  background: #ffffffb3;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-  color: #007f3d;
-  margin-bottom: 1rem;
+h1, h2 {
+  color: #093a2e;
 }
 
-p {
-  color: #444;
-  margin-bottom: 2rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 30px;
-  background-color: #caff4a;
-  color: #004400;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.2s ease;
+button {
+  background-color: #dfff5d;
   border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #093a2e;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s;
 }
 
-.btn:hover {
-  background-color: #b8ff00;
+button:hover {
+  background-color: #b8ff39;
   transform: scale(1.05);
 }
 
-.secondary {
-  background: #f2f2f2;
+.card {
+  background: #fff;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 600px;
 }
 
-.hero-icon {
-  width: 80px;
-  margin-bottom: 1rem;
-}
-
-.timer-card, .test-card, .result-card {
-  background: #f9fff1;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 100, 0, 0.1);
+.timer span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #006633;
 }
 
 input {
-  padding: 0.5rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  width: 60%;
-  margin: 1rem 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #b8ff39;
   text-align: center;
+  font-size: 1rem;
+  margin: 10px 0;
+  width: 80%;
 }
