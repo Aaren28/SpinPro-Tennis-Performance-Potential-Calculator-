@@ -1,34 +1,55 @@
-document.getElementById("performanceForm").addEventListener("submit", function (event) {
-  event.preventDefault();
 
-  const beep = parseFloat(document.getElementById("beepTest").value) || 0;
-  const cooper = parseFloat(document.getElementById("cooperTest").value) || 0;
-  const sprint = parseFloat(document.getElementById("sprint").value) || 0;
-  const jump = parseFloat(document.getElementById("jump").value) || 0;
-  const pushups = parseFloat(document.getElementById("pushups").value) || 0;
-  const plank = parseFloat(document.getElementById("plank").value) || 0;
-  const rhr = parseFloat(document.getElementById("rhr").value) || 0;
-  const serveSpeed = parseFloat(document.getElementById("serveSpeed").value) || 0;
-  const firstServe = parseFloat(document.getElementById("firstServe").value) || 0;
-  const unforcedErrors = parseFloat(document.getElementById("unforcedErrors").value) || 0;
-  const winRate = parseFloat(document.getElementById("winRate").value) || 0;
-  const experience = parseFloat(document.getElementById("experience").value) || 0;
+let timerInterval;
+function startTimer(minutes) {
+  clearInterval(timerInterval);
+  let time = minutes * 60;
+  const timerDisplay = document.getElementById("timer");
+  
+  timerInterval = setInterval(() => {
+    const mins = Math.floor(time / 60);
+    const secs = time % 60;
+    timerDisplay.textContent = `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+    if (time <= 0) clearInterval(timerInterval);
+    time--;
+  }, 1000);
+}
 
-  // Normalize inputs into one performance score (simple but balanced)
-  const enduranceScore = (beep * 10 + cooper / 100) - (rhr / 2);
-  const powerScore = jump * 0.8 + pushups * 0.5 + plank / 5;
-  const speedScore = 100 - (sprint * 10);
-  const tennisSkill = (serveSpeed / 2 + firstServe * 1.2 + winRate * 1.5) - (unforcedErrors * 0.8);
-  const experienceBonus = experience * 5;
+// Save input and go to next page
+function saveAndNext(id, nextPage) {
+  const input = document.getElementById(id);
+  if (input && input.value !== "") {
+    localStorage.setItem(id, input.value);
+    window.location.href = nextPage;
+  } else {
+    alert("Please enter a value before continuing!");
+  }
+}
 
-  const totalScore = enduranceScore + powerScore + speedScore + tennisSkill + experienceBonus;
-  const normalized = Math.max(0, Math.min(100, totalScore / 10));
+// On summary page, display results
+window.addEventListener("DOMContentLoaded", () => {
+  const resultsDiv = document.getElementById("results");
+  if (!resultsDiv) return;
 
-  const proPotential = Math.max(0, Math.min(100, (normalized * 0.9 + experience * 2)));
+  const keys = [
+    "beepLevel",
+    "cooperDistance",
+    "sprintTime",
+    "jumpHeight",
+    "pushups",
+    "plankTime",
+    "serveSpeed",
+    "firstServePercent",
+    "errors",
+    "winPercent",
+    "yearsExperience"
+  ];
 
-  document.getElementById("score").textContent = `🏋️ Performance Score: ${normalized.toFixed(1)} / 100`;
-  document.getElementById("potential").textContent = `🌟 Pro Potential: ${proPotential.toFixed(1)}%`;
+  let html = "<h3>Your Entered Data:</h3><ul>";
+  keys.forEach(k => {
+    const v = localStorage.getItem(k);
+    if (v) html += `<li><strong>${k}:</strong> ${v}</li>`;
+  });
+  html += "</ul>";
 
-  const resultDiv = document.getElementById("result");
-  resultDiv.classList.remove("hidden");
+  resultsDiv.innerHTML = html;
 });
