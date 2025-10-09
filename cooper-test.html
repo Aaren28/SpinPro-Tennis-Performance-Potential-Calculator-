@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cooper Test</title>
-  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
   <div class="card">
-    <h2>🏃 Cooper Test</h2>
-    <p>Run as far as possible in 12 minutes. This measures your aerobic capacity.</p>
+    <h2>⏱️ Cooper Test</h2>
+    <p>Run continuously for <strong>12 minutes</strong>. Try to cover as much distance as possible. 
+    Record your total distance in meters after the timer ends.</p>
 
-    <div class="timer">
-      <span id="cooper-timer">12:00</span>
-      <div class="buttons">
-        <button onclick="startTimer('cooper-timer')">Start</button>
-        <button onclick="pauseTimer()">Pause</button>
-        <button onclick="resetTimer('cooper-timer', 12)">Reset</button>
-      </div>
+    <div id="timer-display">12:00</div>
+    <div class="buttons">
+      <button onclick="startTimer(12)">Start</button>
+      <button onclick="pauseTimer()">Pause</button>
+      <button onclick="resetTimer(12)">Reset</button>
     </div>
 
-    <input type="number" id="cooper-distance" placeholder="Enter distance (m)" />
-    <button onclick="nextPage('sprint-test.html')">Next ➡️</button>
+    <div class="input-group">
+      <label>Distance covered (meters):</label>
+      <input type="number" id="cooper-test" placeholder="e.g. 2500">
+    </div>
+
+    <button onclick="saveCooperTest()">Next ➡️</button>
   </div>
 </body>
 </html>
