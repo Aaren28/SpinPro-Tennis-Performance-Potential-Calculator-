@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vertical Jump Test</title>
+  <title>Vertical Jump</title>
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/script.js" defer></script>
 </head>
 <body>
-  <div class="card">
-    <h2>🦵 Vertical Jump</h2>
-    <p>Stand next to a wall, mark your standing reach, jump as high as you can, 
-    and mark your jump height. The difference is your vertical jump.</p>
+  <div class="container">
+    <h1>🦵 Vertical Jump Test</h1>
+    <p>Measure your maximum vertical jump height.</p>
 
-    <div class="input-group">
-      <label>Jump Height (cm):</label>
-      <input type="number" id="vertical-jump" placeholder="e.g. 55">
-    </div>
+    <label>Jump Height (cm):</label>
+    <input type="number" id="jumpHeight" placeholder="e.g. 50" min="1">
 
+    <p id="jumpError" class="error"></p>
     <button onclick="saveJump()">Next ➡️</button>
   </div>
 </body>
