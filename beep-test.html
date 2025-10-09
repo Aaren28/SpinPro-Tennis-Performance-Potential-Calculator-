@@ -3,32 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Beep Test</title>
+  <title>Beep Test | Tennis Performance Calculator</title>
   <link rel="stylesheet" href="assets/style.css" />
   <script defer src="assets/script.js"></script>
 </head>
-<body>
-  <div class="container">
-    <h2>🏃 Beep Test</h2>
-    <p>Run between two points in time with the beeps until you can’t keep up. This measures aerobic endurance.</p>
+<body class="test-page">
+  <div class="test-wrapper">
+    <div class="test-card">
+      <h2>🏃 Beep Test</h2>
+      <p class="desc">
+        Run between two points with the beeps until you can’t keep up.
+        This measures aerobic endurance.
+      </p>
 
-    <div class="timer">
-      <span id="timerDisplay" data-minutes="15">15:00</span>
+      <div class="timer-box">
+        <div id="timerDisplay" data-minutes="15">15:00</div>
+      </div>
+
+      <div class="button-row">
+        <button id="startTimerBtn" class="btn">Start</button>
+        <button id="pauseTimerBtn" class="btn">Pause</button>
+        <button id="resetTimerBtn" class="btn">Reset</button>
+      </div>
+
+      <div class="input-section">
+        <label for="beepLevel">Beep Test Level</label>
+        <input data-save="beepLevel" id="beepLevel" type="number" step="0.1" placeholder="e.g. 9.5" required />
+      </div>
+
+      <button id="nextBtn" data-next="cooper-test.html" class="btn next">Next ➡️</button>
     </div>
-
-    <div class="controls">
-      <button id="startTimerBtn" class="btn small">Start</button>
-      <button id="pauseTimerBtn" class="btn small">Pause</button>
-      <button id="resetTimerBtn" class="btn small">Reset</button>
-    </div>
-
-    <div class="input-section">
-      <label>Beep Test Level (e.g. 9.5)</label>
-      <input data-save="beepLevel" id="beepLevel" type="number" step="0.1" placeholder="e.g. 9.5" required />
-    </div>
-
-    <button id="nextBtn" data-next="cooper-test.html" class="btn next">Next ➡️</button>
-    <p class="hint">Tip: If you have both beep and cooper results, you can enter either (we store both).</p>
   </div>
 </body>
 </html>
