@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Beep Test | Tennis Performance Calculator</title>
-  <link rel="stylesheet" href="assets/style.css" />
-  <script defer src="assets/script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beep Test</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/script.js" defer></script>
 </head>
-<body class="test-page">
-  <div class="test-wrapper">
-    <div class="test-card">
-      <h2>🏃 Beep Test</h2>
-      <p class="desc">
-        Run between two points with the beeps until you can’t keep up.
-        This measures aerobic endurance.
-      </p>
+<body>
+  <div class="container fade-in">
+    <h1>🏃‍♂️ Beep Test</h1>
+    <p>Run between two points with the beeps until you can't keep up. This measures <strong>aerobic endurance</strong>.</p>
 
-      <div class="timer-box">
-        <div id="timerDisplay" data-minutes="15">15:00</div>
-      </div>
-
-      <div class="button-row">
-        <button id="startTimerBtn" class="btn">Start</button>
-        <button id="pauseTimerBtn" class="btn">Pause</button>
-        <button id="resetTimerBtn" class="btn">Reset</button>
-      </div>
-
-      <div class="input-section">
-        <label for="beepLevel">Beep Test Level</label>
-        <input data-save="beepLevel" id="beepLevel" type="number" step="0.1" placeholder="e.g. 9.5" required />
-      </div>
-
-      <button id="nextBtn" data-next="cooper-test.html" class="btn next">Next ➡️</button>
+    <div class="timer">
+      <span id="timer-display">15:00</span>
     </div>
+
+    <div class="button-group">
+      <button id="start-timer" class="btn">Start</button>
+      <button id="pause-timer" class="btn">Pause</button>
+      <button id="reset-timer" class="btn">Reset</button>
+    </div>
+
+    <label for="beep-level">Beep Test Level:</label>
+    <input id="beep-level" type="number" placeholder="e.g. 9.5">
+
+    <a href="cooper-test.html" class="btn next">Next ➡️</a>
   </div>
 </body>
 </html>
